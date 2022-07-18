@@ -15,26 +15,26 @@ Script to generate and import ASVS controls to SecurityRAT in the blink of an ey
 [SecurityRAT](https://securityrat.github.io/) (*"Security Requirement Automation Tool"*) is a tool helping you manage security requirements in your agile development projects.
 In a nutshell, you specify the properties of an application (usually, we use the name "artifact") that you’re developing. Based on these properties, the tool gives you a list of security requirements you should fulfill. [^1]
 
-At the time of writing, there are no scripts (that I know) to automate the generation and importation of ASVS security controls into the SecurityRAT tool.
+At the time of writing, there are no scripts ~~(that I know)~~ that automates the generation and importation of ASVS security controls into the SecurityRAT tool.
 
 Importing ASVS controls manually has the following drawdowns:
-1. Time-consuming: 4.0.3 version of ASVS contains nearly 300 security controls.
-2. Prone to human error.
+1. Time-consuming. 4.0.3 version of ASVS contains nearly 300 security controls and gets updated frequently.
+3. Prone to human error.
 
 The SecurityRAT creators also released the [SecurityRAT-Requirements](https://github.com/SecurityRAT/Security-Requirements) repository that contains SQL dumps ready to import.
 
 Potential improvements:
 1. The ASVS controls are not updated to the last version.
-2. Just English language available, and the current ASVS version is also available in Spanish and Simplified Chinese.
-3. You need to import them manually.
+2. Just English language available, and the current ASVS version is also available in Spanish and Simplified Chinese ([at least in CSV format](https://github.com/OWASP/ASVS/tree/master/4.0)).
+3. You need to import them manually to the DB.
 
 ### Features
 
-The current script tries to address the above points of improvement with the following features:
+**SecurityRAT-ASVS-Importer** tries to address the above points of improvement with the following features:
 
 * Fetches the latest ASVS version available.
-* Choose among the available languages (English, Spanish or Simplified Chinese).
-* Automatically imports all requirements into SecurityRAT specifying a container with a running DB instance.
+* Let you choose among the available languages (English, Spanish or Simplified Chinese).
+* Automatically imports all requirements into SecurityRAT database specifying a running DB container.
 * It just takes ~4 seconds to perform all the tasks! 🏎️
 
 ## Installation and usage
@@ -42,7 +42,6 @@ The current script tries to address the above points of improvement with the fol
 ```bash
 git clone https://github.com/mllamazares/SecurityRAT-ASVS-Importer
 cd SecurityRAT-ASVS-Importer
-chmod +x secrat_asvs_importer.sh
 bash secrat_asvs_importer.sh -h
 ```
 
@@ -59,7 +58,7 @@ bash secrat_asvs_importer.sh -h
     git clone https://github.com/mllamazares/SecurityRAT-ASVS-Importer
     cd SecurityRAT-ASVS-Importer
     ``` 
-3. Once step 1 has finished, auto-import the latest ASVS Spanish version to SecurityRAT pointing at the DB container:
+3. Once step 1 has finished, auto-import the latest ASVS Spanish version to SecurityRAT using the following command:
     ```
     $ bash secrat_asvs_importer.sh -l es -d securityrat-mariadb
     [+] Searching latest ASVS relase...
@@ -73,16 +72,17 @@ bash secrat_asvs_importer.sh -h
     ``` 
 
 To verify that the requirements are indeed loaded:
-1. Go to http://localhost:9002/ and log in with `admin/admin` (yep, you should change this in the future).
+1. Navigate to http://localhost:9002/ and log in with `admin/admin` (yep, you should change this in the future).
 2. Click on `Define a new artifact`.
 3. Select the ASVS chapter and level that you need and smash the `Generate` button.
     ![](./img/secrat-asvs-artifact.png)
-4. There you go! Now you have an updated version of the ASVS controls in Spanish:
+4. There you go! Now you have an updated version of the ASVS controls in Spanish! 😎
     ![](./img/secrat-asvs-reqs.png)
 
 ### Options
 
 ```
+$ bash secrat_asvs_importer.sh -h
     NAME
         SecurityRAT ASVS Importer
 
@@ -105,7 +105,8 @@ To verify that the requirements are indeed loaded:
 ```
 
 ## TODO
-- [ ] Create a better categorization of the requirements.
+- [ ] Create a better categorization of the requirements. 
+    - For sure I will map [STRIDE-vs-ASVS](https://github.com/mllamazares/STRIDE-vs-ASVS), but I'm open to suggestions.
 - [ ] Migrate to Python for better portability and ease of collaboration.
 - [ ] Extend to different security standards like BSI C5.
 
