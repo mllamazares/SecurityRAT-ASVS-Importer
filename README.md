@@ -8,31 +8,31 @@
 
 Script to generate and import ASVS controls to SecurityRAT in the blink of an eye.
 
-**TL;DR** If you just need the ASVS requirements in SQL format and don't care about the script, go [the output folder](./sql/output). 😉
+**TL;DR**: *If you just need the ASVS requirements in SQL format and don't care about the script, go to [the output folder](./sql/output). 😉*
 
 ## Rationale
 
 [SecurityRAT](https://securityrat.github.io/) (*"Security Requirement Automation Tool"*) is a tool helping you manage security requirements in your agile development projects.
 In a nutshell, you specify the properties of an application (usually, we use the name "artifact") that you’re developing. Based on these properties, the tool gives you a list of security requirements you should fulfill. [^1]
 
-At the time of writting, there are no scripts (that I know) to automate the generation and importation of ASVS security controls into SecurityRAT tool.
+At the time of writing, there are no scripts (that I know) to automate the generation and importation of ASVS security controls into the SecurityRAT tool.
 
 Importing ASVS controls manually has the following drawdowns:
-1. Time consuming: 4.0.3 version of ASVS contains nearly 300 security controls.
-2. Prone to human mistakes.
+1. Time-consuming: 4.0.3 version of ASVS contains nearly 300 security controls.
+2. Prone to human error.
 
 The SecurityRAT creators also released the [SecurityRAT-Requirements](https://github.com/SecurityRAT/Security-Requirements) repository that contains SQL dumps ready to import.
 
 Potential improvements:
 1. The ASVS controls are not updated to the last version.
-2. They are just in English language, and the current ASVS version is also available in Spanish and Simplified Chinese.
+2. Just English language available, and the current ASVS version is also available in Spanish and Simplified Chinese.
 3. You need to import them manually.
 
 ### Features
 
-The current script try to address the avobe points of improvements with the following features:
+The current script tries to address the above points of improvement with the following features:
 
-* Fetchs the latest ASVS version available.
+* Fetches the latest ASVS version available.
 * Choose among the available languages (English, Spanish or Simplified Chinese).
 * Automatically imports all requirements into SecurityRAT specifying a container with a running DB instance.
 * It just takes ~4 seconds to perform all the tasks! 🏎️
@@ -59,11 +59,11 @@ bash secrat_asvs_importer.sh -h
     git clone https://github.com/mllamazares/SecurityRAT-ASVS-Importer
     cd SecurityRAT-ASVS-Importer
     ``` 
-3. Once the step 1 has finished, auto-import the latest ASVS Spanish version to SecurityRAT pointing at the DB container:
+3. Once step 1 has finished, auto-import the latest ASVS Spanish version to SecurityRAT pointing at the DB container:
     ```
     $ bash secrat_asvs_importer.sh -l es -d securityrat-mariadb
     [+] Searching latest ASVS relase...
-    The lastest ASVS version is 4.0.3
+    The latest ASVS version is 4.0.3
     [+] Downloading the es version of ASVS in CSV format...
     ./csv/asvs_4.0.3_es.csv file downloaded!
     [+] Creating SQL dump with the required configuration...
@@ -98,7 +98,7 @@ To verify that the requirements are indeed loaded:
         -l <language> 
             The language of the ASVS controls. Avaiable options are en, es or zh-cn. Default is en
         -d <securityrat_docker_db_container>
-            The running docker container that contains the SecurityRAT database where it will overwrite the requirements.
+            The running docker container that contains the SecurityRAT database where will overwrite the requirements.
             Example: securityrat-mariadb
         -h
             Prints this message (duh).
@@ -106,7 +106,7 @@ To verify that the requirements are indeed loaded:
 
 ## TODO
 - [ ] Create a better categorization of the requirements.
-- [ ] Migrate to Python for better portability and easing collaboration.
+- [ ] Migrate to Python for better portability and ease of collaboration.
 - [ ] Extend to different security standards like BSI C5.
 
 [^1]: Extracted from https://securityrat.github.io/

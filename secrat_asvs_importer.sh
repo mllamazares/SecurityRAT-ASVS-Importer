@@ -19,7 +19,7 @@ print_help() {
         -l <language> 
             The language of the ASVS controls. Avaiable options are en, es or zh-cn. Default is en
         -d <securityrat_docker_db_container>
-            The running docker container that contains the SecurityRAT database where it will overwrite the requirements.
+            The running docker container that contains the SecurityRAT database where will overwrite the requirements.
             Example: securityrat-mysql
         -h
             Prints this message (duh).
