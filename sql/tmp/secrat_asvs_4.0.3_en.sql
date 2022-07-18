@@ -4,14 +4,14 @@ SET CHARACTER SET 'utf8';
 SET NAMES 'utf8';
 -- ASVS Section
 INSERT INTO `REQCATEGORY` VALUES (1,"Secure Software Development Lifecycle","V1.1", '',1, _binary '');
--- ASVS Chapter
-INSERT INTO `COLLECTIONINSTANCE` VALUES (4,"V1 - Architecture, Design and Threat Modeling","Architecture, Design and Threat Modeling",4,_binary '', 1);
 -- Requirement Skeleton
 INSERT INTO `REQUIREMENTSKELETON` VALUES (1,NULL,"V1.1.1","Verify the use of a secure software development lifecycle that addresses security in all stages of development. ([C1](https://owasp.org/www-project-proactive-controls/#div-numbering))",1, _binary '',1);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,1);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,1);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,1);
+-- ASVS Chapter
+INSERT INTO `COLLECTIONINSTANCE` VALUES (4,"V1 - Architecture, Design and Threat Modeling","Architecture, Design and Threat Modeling",4,_binary '', 1);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (4,1);
 -- Link CWE Reference
@@ -35,7 +35,7 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (4,'',2,2);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,2);
 -- Requirement Skeleton
-INSERT INTO `REQUIREMENTSKELETON` VALUES (3,NULL,"V1.1.3","Verify that all user stories and features contain functional security constraints, such as ",3, _binary '',1);
+INSERT INTO `REQUIREMENTSKELETON` VALUES (3,NULL,"V1.1.3","Verify that all user stories and features contain functional security constraints, such as 'As a user, I should be able to view and edit my profile. I should not be able to view or edit anyone else's profile'",3, _binary '',1);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,3);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,3);
@@ -43,9 +43,9 @@ INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,3);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (4,3);
 -- Link CWE Reference
-INSERT INTO `OPTCOLUMNCONTENT` VALUES (5,'✓',1,3);
+INSERT INTO `OPTCOLUMNCONTENT` VALUES (5,'',1,3);
 -- Link NIST Reference
-INSERT INTO `OPTCOLUMNCONTENT` VALUES (6,'1110',2,3);
+INSERT INTO `OPTCOLUMNCONTENT` VALUES (6,'',2,3);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,3);
 -- Requirement Skeleton
@@ -612,14 +612,14 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (84,'',2,42);
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,42);
 -- ASVS Section
 INSERT INTO `REQCATEGORY` VALUES (13,"Password Security","V2.1", '',13, _binary '');
--- ASVS Chapter
-INSERT INTO `COLLECTIONINSTANCE` VALUES (5,"V2 - Authentication","Authentication",5,_binary '', 1);
 -- Requirement Skeleton
 INSERT INTO `REQUIREMENTSKELETON` VALUES (43,NULL,"V2.1.1","Verify that user set passwords are at least 12 characters in length (after multiple spaces are combined). ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",43, _binary '',13);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,43);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,43);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,43);
+-- ASVS Chapter
+INSERT INTO `COLLECTIONINSTANCE` VALUES (5,"V2 - Authentication","Authentication",5,_binary '', 1);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (5,43);
 -- Link CWE Reference
@@ -755,7 +755,7 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (104,'5.1.1.2',2,52);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,52);
 -- Requirement Skeleton
-INSERT INTO `REQUIREMENTSKELETON` VALUES (53,NULL,"V2.1.11","Verify that ''paste'' functionality",53, _binary '',13);
+INSERT INTO `REQUIREMENTSKELETON` VALUES (53,NULL,"V2.1.11","Verify that 'paste' functionality, browser password helpers, and external password managers are permitted.",53, _binary '',13);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,53);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,53);
@@ -763,9 +763,9 @@ INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,53);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (5,53);
 -- Link CWE Reference
-INSERT INTO `OPTCOLUMNCONTENT` VALUES (105,'✓',1,53);
+INSERT INTO `OPTCOLUMNCONTENT` VALUES (105,'521',1,53);
 -- Link NIST Reference
-INSERT INTO `OPTCOLUMNCONTENT` VALUES (106,'✓',2,53);
+INSERT INTO `OPTCOLUMNCONTENT` VALUES (106,'5.1.1.2',2,53);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,53);
 -- Requirement Skeleton
@@ -1015,7 +1015,7 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (140,'5.1.1.2',2,70);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,70);
 -- Requirement Skeleton
-INSERT INTO `REQUIREMENTSKELETON` VALUES (71,NULL,"V2.5.2","Verify password hints or knowledge-based authentication (so-called ''secret questions'') are not present.",71, _binary '',17);
+INSERT INTO `REQUIREMENTSKELETON` VALUES (71,NULL,"V2.5.2","Verify password hints or knowledge-based authentication (so-called 'secret questions') are not present.",71, _binary '',17);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,71);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,71);
@@ -1043,7 +1043,7 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (144,'5.1.1.2',2,72);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,72);
 -- Requirement Skeleton
-INSERT INTO `REQUIREMENTSKELETON` VALUES (73,NULL,"V2.5.4","Verify shared or default accounts are not present (e.g. ''root'",73, _binary '',17);
+INSERT INTO `REQUIREMENTSKELETON` VALUES (73,NULL,"V2.5.4","Verify shared or default accounts are not present (e.g. 'root', 'admin', or 'sa').",73, _binary '',17);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,73);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,73);
@@ -1051,9 +1051,9 @@ INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,73);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (5,73);
 -- Link CWE Reference
-INSERT INTO `OPTCOLUMNCONTENT` VALUES (145,'✓',1,73);
+INSERT INTO `OPTCOLUMNCONTENT` VALUES (145,'16',1,73);
 -- Link NIST Reference
-INSERT INTO `OPTCOLUMNCONTENT` VALUES (146,'✓',2,73);
+INSERT INTO `OPTCOLUMNCONTENT` VALUES (146,'5.1.1.2 / A.3',2,73);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,73);
 -- Requirement Skeleton
@@ -1145,7 +1145,7 @@ INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,79);
 -- ASVS Section
 INSERT INTO `REQCATEGORY` VALUES (19,"Out of Band Verifier","V2.7", '',19, _binary '');
 -- Requirement Skeleton
-INSERT INTO `REQUIREMENTSKELETON` VALUES (80,NULL,"V2.7.1","Verify that clear text out of band (NIST ''restricted'') authenticators",80, _binary '',19);
+INSERT INTO `REQUIREMENTSKELETON` VALUES (80,NULL,"V2.7.1","Verify that clear text out of band (NIST 'restricted') authenticators, such as SMS or PSTN, are not offered by default, and stronger alternatives such as push notifications are offered first.",80, _binary '',19);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,80);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,80);
@@ -1153,9 +1153,9 @@ INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,80);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (5,80);
 -- Link CWE Reference
-INSERT INTO `OPTCOLUMNCONTENT` VALUES (159,'✓',1,80);
+INSERT INTO `OPTCOLUMNCONTENT` VALUES (159,'287',1,80);
 -- Link NIST Reference
-INSERT INTO `OPTCOLUMNCONTENT` VALUES (160,'✓',2,80);
+INSERT INTO `OPTCOLUMNCONTENT` VALUES (160,'5.1.3.2',2,80);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,80);
 -- Requirement Skeleton
@@ -1315,7 +1315,7 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (182,'',2,91);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,91);
 -- Requirement Skeleton
-INSERT INTO `REQUIREMENTSKELETON` VALUES (92,NULL,"V2.8.7","Verify that biometric authenticators are limited to use only as secondary factors in conjunction with either something you have and something you know.",92, _binary '',20);
+INSERT INTO `REQUIREMENTSKELETON` VALUES (92,NULL,"V2.8.7","Verify that biometric authenticators are limited to use only as secondary factors in conjunction with either something you have and something you know. L1: o; L2: ✓; L3: 308",92, _binary '',20);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,92);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,92);
@@ -1375,7 +1375,7 @@ INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,95);
 -- ASVS Section
 INSERT INTO `REQCATEGORY` VALUES (22,"Service Authentication","V2.10", '',22, _binary '');
 -- Requirement Skeleton
-INSERT INTO `REQUIREMENTSKELETON` VALUES (96,NULL,"V2.10.1","Verify that intra-service secrets do not rely on unchanging credentials such as passwords, API keys or shared accounts with privileged access.",96, _binary '',22);
+INSERT INTO `REQUIREMENTSKELETON` VALUES (96,NULL,"V2.10.1","Verify that intra-service secrets do not rely on unchanging credentials such as passwords, API keys or shared accounts with privileged access. L1: OS assisted; L2: HSM; L3: 287",96, _binary '',22);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,96);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,96);
@@ -1389,7 +1389,7 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (192,'',2,96);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,96);
 -- Requirement Skeleton
-INSERT INTO `REQUIREMENTSKELETON` VALUES (97,NULL,"V2.10.2","Verify that if passwords are required for service authentication, the service account used is not a default credential. (e.g. root/root or admin/admin are default in some services during installation).",97, _binary '',22);
+INSERT INTO `REQUIREMENTSKELETON` VALUES (97,NULL,"V2.10.2","Verify that if passwords are required for service authentication, the service account used is not a default credential. (e.g. root/root or admin/admin are default in some services during installation). L1: OS assisted; L2: HSM; L3: 255",97, _binary '',22);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,97);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,97);
@@ -1403,7 +1403,7 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (194,'',2,97);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,97);
 -- Requirement Skeleton
-INSERT INTO `REQUIREMENTSKELETON` VALUES (98,NULL,"V2.10.3","Verify that passwords are stored with sufficient protection to prevent offline recovery attacks, including local system access.",98, _binary '',22);
+INSERT INTO `REQUIREMENTSKELETON` VALUES (98,NULL,"V2.10.3","Verify that passwords are stored with sufficient protection to prevent offline recovery attacks, including local system access. L1: OS assisted; L2: HSM; L3: 522",98, _binary '',22);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,98);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,98);
@@ -1417,7 +1417,7 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (196,'',2,98);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,98);
 -- Requirement Skeleton
-INSERT INTO `REQUIREMENTSKELETON` VALUES (99,NULL,"V2.10.4","Verify passwords, integrations with databases and third-party systems, seeds and internal secrets, and API keys are managed securely and not included in the source code or stored within source code repositories. Such storage SHOULD resist offline attacks. The use of a secure software key store (L1), hardware TPM, or an HSM (L3) is recommended for password storage.",99, _binary '',22);
+INSERT INTO `REQUIREMENTSKELETON` VALUES (99,NULL,"V2.10.4","Verify passwords, integrations with databases and third-party systems, seeds and internal secrets, and API keys are managed securely and not included in the source code or stored within source code repositories. Such storage SHOULD resist offline attacks. The use of a secure software key store (L1), hardware TPM, or an HSM (L3) is recommended for password storage. L1: OS assisted; L2: HSM; L3: 798",99, _binary '',22);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,99);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,99);
@@ -1432,14 +1432,14 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (198,'',2,99);
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,99);
 -- ASVS Section
 INSERT INTO `REQCATEGORY` VALUES (23,"Fundamental Session Management Security","V3.1", '',23, _binary '');
--- ASVS Chapter
-INSERT INTO `COLLECTIONINSTANCE` VALUES (6,"V3 - Session Management","Session Management",6,_binary '', 1);
 -- Requirement Skeleton
 INSERT INTO `REQUIREMENTSKELETON` VALUES (100,NULL,"V3.1.1","Verify the application never reveals session tokens in URL parameters.",100, _binary '',23);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,100);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,100);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,100);
+-- ASVS Chapter
+INSERT INTO `COLLECTIONINSTANCE` VALUES (6,"V3 - Session Management","Session Management",6,_binary '', 1);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (6,100);
 -- Link CWE Reference
@@ -1523,7 +1523,7 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (210,'7.1',2,105);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,105);
 -- Requirement Skeleton
-INSERT INTO `REQUIREMENTSKELETON` VALUES (106,NULL,"V3.3.2","If authenticators permit users to remain logged in, verify that re-authentication occurs periodically both when actively used or after an idle period. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering))",106, _binary '',25);
+INSERT INTO `REQUIREMENTSKELETON` VALUES (106,NULL,"V3.3.2","If authenticators permit users to remain logged in, verify that re-authentication occurs periodically both when actively used or after an idle period. ([C6](https://owasp.org/www-project-proactive-controls/#div-numbering)) L1: 30 days; L2: 12 hours or 30 minutes of inactivity, 2FA optional; L3: 12 hours or 15 minutes of inactivity, with 2FA",106, _binary '',25);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,106);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,106);
@@ -1609,7 +1609,7 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (222,'7.1.1',2,111);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,111);
 -- Requirement Skeleton
-INSERT INTO `REQUIREMENTSKELETON` VALUES (112,NULL,"V3.4.4","Verify that cookie-based session tokens use the ''__Host-'' prefix so cookies are only sent to the host that initially set the cookie.",112, _binary '',26);
+INSERT INTO `REQUIREMENTSKELETON` VALUES (112,NULL,"V3.4.4","Verify that cookie-based session tokens use the '__Host-' prefix so cookies are only sent to the host that initially set the cookie.",112, _binary '',26);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,112);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,112);
@@ -1728,14 +1728,14 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (238,'',2,119);
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,119);
 -- ASVS Section
 INSERT INTO `REQCATEGORY` VALUES (30,"General Access Control Design","V4.1", '',30, _binary '');
--- ASVS Chapter
-INSERT INTO `COLLECTIONINSTANCE` VALUES (7,"V4 - Access Control","Access Control",7,_binary '', 1);
 -- Requirement Skeleton
 INSERT INTO `REQUIREMENTSKELETON` VALUES (120,NULL,"V4.1.1","Verify that the application enforces access control rules on a trusted service layer, especially if client-side access control is present and could be bypassed.",120, _binary '',30);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,120);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,120);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,120);
+-- ASVS Chapter
+INSERT INTO `COLLECTIONINSTANCE` VALUES (7,"V4 - Access Control","Access Control",7,_binary '', 1);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (7,120);
 -- Link CWE Reference
@@ -1874,14 +1874,14 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (258,'',2,129);
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,129);
 -- ASVS Section
 INSERT INTO `REQCATEGORY` VALUES (33,"Input Validation","V5.1", '',33, _binary '');
--- ASVS Chapter
-INSERT INTO `COLLECTIONINSTANCE` VALUES (8,"V5 - Validation, Sanitization and Encoding","Validation, Sanitization and Encoding",8,_binary '', 1);
 -- Requirement Skeleton
 INSERT INTO `REQUIREMENTSKELETON` VALUES (130,NULL,"V5.1.1","Verify that the application has defenses against HTTP parameter pollution attacks, particularly if the application framework makes no distinction about the source of request parameters (GET, POST, cookies, headers, or environment variables).",130, _binary '',33);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,130);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,130);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,130);
+-- ASVS Chapter
+INSERT INTO `COLLECTIONINSTANCE` VALUES (8,"V5 - Validation, Sanitization and Encoding","Validation, Sanitization and Encoding",8,_binary '', 1);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (8,130);
 -- Link CWE Reference
@@ -2306,14 +2306,14 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (318,'',2,159);
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,159);
 -- ASVS Section
 INSERT INTO `REQCATEGORY` VALUES (38,"Data Classification","V6.1", '',38, _binary '');
--- ASVS Chapter
-INSERT INTO `COLLECTIONINSTANCE` VALUES (9,"V6 - Stored Cryptography","Stored Cryptography",9,_binary '', 1);
 -- Requirement Skeleton
 INSERT INTO `REQUIREMENTSKELETON` VALUES (160,NULL,"V6.1.1","Verify that regulated private data is stored encrypted while at rest, such as Personally Identifiable Information (PII), sensitive personal information, or data assessed likely to be subject to EU's GDPR.",160, _binary '',38);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,160);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,160);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,160);
+-- ASVS Chapter
+INSERT INTO `COLLECTIONINSTANCE` VALUES (9,"V6 - Stored Cryptography","Stored Cryptography",9,_binary '', 1);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (9,160);
 -- Link CWE Reference
@@ -2540,14 +2540,14 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (350,'',2,175);
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,175);
 -- ASVS Section
 INSERT INTO `REQCATEGORY` VALUES (42,"Log Content","V7.1", '',42, _binary '');
--- ASVS Chapter
-INSERT INTO `COLLECTIONINSTANCE` VALUES (10,"V7 - Error Handling and Logging","Error Handling and Logging",10,_binary '', 1);
 -- Requirement Skeleton
 INSERT INTO `REQUIREMENTSKELETON` VALUES (176,NULL,"V7.1.1","Verify that the application does not log credentials or payment details. Session tokens should only be stored in logs in an irreversible, hashed form. ([C9, C10](https://owasp.org/www-project-proactive-controls/#div-numbering))",176, _binary '',42);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,176);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,176);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,176);
+-- ASVS Chapter
+INSERT INTO `COLLECTIONINSTANCE` VALUES (10,"V7 - Error Handling and Logging","Error Handling and Logging",10,_binary '', 1);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (10,176);
 -- Link CWE Reference
@@ -2715,7 +2715,7 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (374,'',2,187);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,187);
 -- Requirement Skeleton
-INSERT INTO `REQUIREMENTSKELETON` VALUES (188,NULL,"V7.4.3","Verify that a ''last resort'' error handler is defined which will catch all unhandled exceptions. ([C10](https://owasp.org/www-project-proactive-controls/#div-numbering))",188, _binary '',45);
+INSERT INTO `REQUIREMENTSKELETON` VALUES (188,NULL,"V7.4.3","Verify that a 'last resort' error handler is defined which will catch all unhandled exceptions. ([C10](https://owasp.org/www-project-proactive-controls/#div-numbering))",188, _binary '',45);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,188);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,188);
@@ -2730,14 +2730,14 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (376,'',2,188);
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,188);
 -- ASVS Section
 INSERT INTO `REQCATEGORY` VALUES (46,"General Data Protection","V8.1", '',46, _binary '');
--- ASVS Chapter
-INSERT INTO `COLLECTIONINSTANCE` VALUES (11,"V8 - Data Protection","Data Protection",11,_binary '', 1);
 -- Requirement Skeleton
 INSERT INTO `REQUIREMENTSKELETON` VALUES (189,NULL,"V8.1.1","Verify the application protects sensitive data from being cached in server components such as load balancers and application caches.",189, _binary '',46);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,189);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,189);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,189);
+-- ASVS Chapter
+INSERT INTO `COLLECTIONINSTANCE` VALUES (11,"V8 - Data Protection","Data Protection",11,_binary '', 1);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (11,189);
 -- Link CWE Reference
@@ -2976,14 +2976,14 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (410,'',2,205);
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,205);
 -- ASVS Section
 INSERT INTO `REQCATEGORY` VALUES (49,"Client Communication Security","V9.1", '',49, _binary '');
--- ASVS Chapter
-INSERT INTO `COLLECTIONINSTANCE` VALUES (12,"V9 - Communication","Communication",12,_binary '', 1);
 -- Requirement Skeleton
 INSERT INTO `REQUIREMENTSKELETON` VALUES (206,NULL,"V9.1.1","Verify that TLS is used for all client connectivity, and does not fall back to insecure or unencrypted communications. ([C8](https://owasp.org/www-project-proactive-controls/#div-numbering))",206, _binary '',49);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,206);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,206);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,206);
+-- ASVS Chapter
+INSERT INTO `COLLECTIONINSTANCE` VALUES (12,"V9 - Communication","Communication",12,_binary '', 1);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (12,206);
 -- Link CWE Reference
@@ -3094,14 +3094,14 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (426,'',2,213);
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,213);
 -- ASVS Section
 INSERT INTO `REQCATEGORY` VALUES (51,"Code Integrity","V10.1", '',51, _binary '');
--- ASVS Chapter
-INSERT INTO `COLLECTIONINSTANCE` VALUES (13,"V10 - Malicious Code","Malicious Code",13,_binary '', 1);
 -- Requirement Skeleton
 INSERT INTO `REQUIREMENTSKELETON` VALUES (214,NULL,"V10.1.1","Verify that a code analysis tool is in use that can detect potentially malicious code, such as time functions, unsafe file operations and network connections.",214, _binary '',51);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,214);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,214);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,214);
+-- ASVS Chapter
+INSERT INTO `COLLECTIONINSTANCE` VALUES (13,"V10 - Malicious Code","Malicious Code",13,_binary '', 1);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (13,214);
 -- Link CWE Reference
@@ -3242,14 +3242,14 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (446,'',2,223);
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,223);
 -- ASVS Section
 INSERT INTO `REQCATEGORY` VALUES (54,"Business Logic Security","V11.1", '',54, _binary '');
--- ASVS Chapter
-INSERT INTO `COLLECTIONINSTANCE` VALUES (14,"V11 - Business Logic","Business Logic",14,_binary '', 1);
 -- Requirement Skeleton
 INSERT INTO `REQUIREMENTSKELETON` VALUES (224,NULL,"V11.1.1","Verify that the application will only process business logic flows for the same user in sequential step order and without skipping steps.",224, _binary '',54);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,224);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,224);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,224);
+-- ASVS Chapter
+INSERT INTO `COLLECTIONINSTANCE` VALUES (14,"V11 - Business Logic","Business Logic",14,_binary '', 1);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (14,224);
 -- Link CWE Reference
@@ -3315,7 +3315,7 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (456,'',2,228);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,228);
 -- Requirement Skeleton
-INSERT INTO `REQUIREMENTSKELETON` VALUES (229,NULL,"V11.1.6","Verify that the application does not suffer from ''Time Of Check to Time Of Use'' (TOCTOU) issues or other race conditions for sensitive operations.",229, _binary '',54);
+INSERT INTO `REQUIREMENTSKELETON` VALUES (229,NULL,"V11.1.6","Verify that the application does not suffer from 'Time Of Check to Time Of Use' (TOCTOU) issues or other race conditions for sensitive operations.",229, _binary '',54);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,229);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,229);
@@ -3358,14 +3358,14 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (462,'',2,231);
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,231);
 -- ASVS Section
 INSERT INTO `REQCATEGORY` VALUES (55,"File Upload","V12.1", '',55, _binary '');
--- ASVS Chapter
-INSERT INTO `COLLECTIONINSTANCE` VALUES (15,"V12 - Files and Resources","Files and Resources",15,_binary '', 1);
 -- Requirement Skeleton
 INSERT INTO `REQUIREMENTSKELETON` VALUES (232,NULL,"V12.1.1","Verify that the application will not accept large files that could fill up storage or cause a denial of service.",232, _binary '',55);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,232);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,232);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,232);
+-- ASVS Chapter
+INSERT INTO `COLLECTIONINSTANCE` VALUES (15,"V12 - Files and Resources","Files and Resources",15,_binary '', 1);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (15,232);
 -- Link CWE Reference
@@ -3582,14 +3582,14 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (492,'',2,246);
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,246);
 -- ASVS Section
 INSERT INTO `REQCATEGORY` VALUES (61,"Generic Web Service Security","V13.1", '',61, _binary '');
--- ASVS Chapter
-INSERT INTO `COLLECTIONINSTANCE` VALUES (16,"V13 - API and Web Service","API and Web Service",16,_binary '', 1);
 -- Requirement Skeleton
 INSERT INTO `REQUIREMENTSKELETON` VALUES (247,NULL,"V13.1.1","Verify that all application components use the same encodings and parsers to avoid parsing attacks that exploit different URI or file parsing behavior that could be used in SSRF and RFI attacks.",247, _binary '',61);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,247);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,247);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,247);
+-- ASVS Chapter
+INSERT INTO `COLLECTIONINSTANCE` VALUES (16,"V13 - API and Web Service","API and Web Service",16,_binary '', 1);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (16,247);
 -- Link CWE Reference
@@ -3798,14 +3798,14 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (522,'',2,261);
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,261);
 -- ASVS Section
 INSERT INTO `REQCATEGORY` VALUES (65,"Build and Deploy","V14.1", '',65, _binary '');
--- ASVS Chapter
-INSERT INTO `COLLECTIONINSTANCE` VALUES (17,"V14 - Configuration","Configuration",17,_binary '', 1);
 -- Requirement Skeleton
 INSERT INTO `REQUIREMENTSKELETON` VALUES (262,NULL,"V14.1.1","Verify that the application build and deployment processes are performed in a secure and repeatable way, such as CI / CD automation, automated configuration management, and automated deployment scripts.",262, _binary '',65);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,262);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,262);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (3,262);
+-- ASVS Chapter
+INSERT INTO `COLLECTIONINSTANCE` VALUES (17,"V14 - Configuration","Configuration",17,_binary '', 1);
 -- Link ASVS Chapter
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (17,262);
 -- Link CWE Reference
@@ -4014,7 +4014,7 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (552,'',2,276);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,276);
 -- Requirement Skeleton
-INSERT INTO `REQUIREMENTSKELETON` VALUES (277,NULL,"V14.4.2","Verify that all API responses contain a Content-Disposition: attachment; filename=''api.json'' header (or other appropriate filename for the content type).",277, _binary '',68);
+INSERT INTO `REQUIREMENTSKELETON` VALUES (277,NULL,"V14.4.2","Verify that all API responses contain a Content-Disposition: attachment; filename='api.json' header (or other appropriate filename for the content type).",277, _binary '',68);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,277);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,277);
@@ -4128,7 +4128,7 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (568,'',2,284);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,284);
 -- Requirement Skeleton
-INSERT INTO `REQUIREMENTSKELETON` VALUES (285,NULL,"V14.5.3","Verify that the Cross-Origin Resource Sharing (CORS) Access-Control-Allow-Origin header uses a strict allow list of trusted domains and subdomains to match against and does not support the ''null'' origin.",285, _binary '',69);
+INSERT INTO `REQUIREMENTSKELETON` VALUES (285,NULL,"V14.5.3","Verify that the Cross-Origin Resource Sharing (CORS) Access-Control-Allow-Origin header uses a strict allow list of trusted domains and subdomains to match against and does not support the 'null' origin.",285, _binary '',69);
 -- Link ASVS Levels
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (1,285);
 INSERT INTO `REQUIREMENTSKELETON_COLLECTIONINSTANCE` VALUES (2,285);
@@ -4155,10 +4155,6 @@ INSERT INTO `OPTCOLUMNCONTENT` VALUES (571,'',1,286);
 INSERT INTO `OPTCOLUMNCONTENT` VALUES (572,'',2,286);
 -- Link Project Type
 INSERT INTO `REQUIREMENTSKELETON_PROJECTTYPE` VALUES (1,286);
--- ASVS Section
-INSERT INTO `REQCATEGORY` VALUES (70,"","", '',70, _binary '');
--- ASVS Chapter
-INSERT INTO `COLLECTIONINSTANCE` VALUES (18," - ","",18,_binary '', 1);
 
 SET FOREIGN_KEY_CHECKS=1;
 -- EOF

@@ -30,81 +30,6 @@ function link_chapter(chapter, skeleton_id) {
     insert_skeleton_collection(chapter + SKECOLL_OFFSET, skeleton_id);
 }
 
-function link_stride(chapter, skeleton_id) {
-    # https://github.com/mllamazares/STRIDE-vs-ASVS/blob/main/STRIDE-vs-ASVS-4.0.csv
-
-    # SPOOFING
-    #   V2 - Authentication
-    #   V3 - Session Management
-    if (chapter ~ /^V(2|3)$/){
-        insert_skeleton_collection(4, skeleton_id);
-    }
-
-    # TAMPERING
-    #   V4 - Access Control
-    #   V5 - Validation, Sanitization and Encoding
-    if (chapter ~ /^V(4|5)$/){
-        insert_skeleton_collection(5, skeleton_id);
-    }
-
-    # REPUDIATION
-    #   V7 - Error Handling and Logging
-    if (chapter ~ /^V(7)$/){
-        insert_skeleton_collection(6, skeleton_id);
-    }
-
-    # INFORMATION DISCLOSURE
-    #   V6 - Stored Cryptography
-    #   V7 - Error Handling and Logging
-    #   V8 - Data Protection
-    #   V9 - Communication
-    #   V14 - Configuration
-    if (chapter ~ /^V(6|7|8|9|14)$/){
-        insert_skeleton_collection(7, skeleton_id);
-    }
-
-    # DENIAL OF SERVICE
-    #   V14 - Configuration
-    if (chapter ~ /^V(14)$/){
-        insert_skeleton_collection(8, skeleton_id);
-    }
-
-    # ELEVATION OF PRIVILEGE
-    #   V4 - Access Control
-    #   V14 - Configuration
-    if (chapter ~ /^V(4|14)$/){
-        insert_skeleton_collection(9, skeleton_id);
-    }
-}
-
-function link_adhoc_chapters(chapter, skeleton_id) {
-
-    if (chapter !~ /^V(12|13)$/){
-        return 
-    }
-
-    # Link all STRIDE threats (ids from 4 to 9) to V12 or V13 ASVS categories
-    # This is just for adapting to the SecurityRAT selection criteria
-    # SecurityRAT fetchs the requirements with an AND not with an OR condition
-    # Thus, if you want to set a switch, you need to link the rest of the categories.
-    # TODO: raise a issue to SecurityRAT and/or find an alternative that doesn't suck
-    for (j=4; j<=9; j++) {
-        insert_skeleton_collection(j, skeleton_id);
-    }
-
-    # V12 - Files and Resources
-    if (chapter ~ /^V(12)$/){
-        # Yes, handles files
-        insert_skeleton_collection(10, skeleton_id);
-    }
-
-    # V13 - API and Web Service
-    if (chapter ~ /^V(13)$/){
-        # Yes, API service
-        insert_skeleton_collection(11, skeleton_id);
-    }
-}
-
 function link_reference(ref_code, opt_column_id, skeleton_id) {
     print "INSERT INTO `OPTCOLUMNCONTENT` VALUES (" optcont_id ",'" ref_code "'," opt_column_id "," skeleton_id ");"
     optcont_id++;
@@ -163,7 +88,7 @@ BEGIN {
 
     # If the levels are not checkboxes but specifications we want to include them in the requirement descriptions.
     if (level1 ~ /[0-9a-zA-Z]+/){
-        req_description = req_description "<br>L1: " level1 "<br>L2: " level2 "<br>L3: " level3
+        req_description = req_description " L1: " level1 "; L2: " level2 "; L3: " level3
     }
 
     print "-- Requirement Skeleton";
@@ -174,24 +99,15 @@ BEGIN {
     link_asvs_level(level2, 2, rownum);
     link_asvs_level(level3, 3, rownum);
 
-    if (stride_version != ""){
-        print "-- Link STRIDE";
-        link_stride(chapter_id, rownum);
-
-        print "-- Link ad-hoc chapters"
-        link_adhoc_chapters(chapter_id, rownum);
-
-    } else {
-        if (!chapters[chapter_name]){
-            print "-- ASVS Chapter";
-            insert_chapter(nchapt, chapter_id, chapter_name, chapter_name);
-            chapters[chapter_name] = 1;
-            nchapt++;
-        }
-
-        print "-- Link ASVS Chapter";
-        link_chapter(chapter_id, rownum);
+    if (!chapters[chapter_name]){
+        print "-- ASVS Chapter";
+        insert_chapter(nchapt, chapter_id, chapter_name, chapter_name);
+        chapters[chapter_name] = 1;
+        nchapt++;
     }
+
+    print "-- Link ASVS Chapter";
+    link_chapter(chapter_id, rownum);
 
     print "-- Link CWE Reference";
     link_reference(cwe, 1, rownum);

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 set -e
 
 print_help() {
@@ -15,15 +17,10 @@ print_help() {
 
     OPTIONS
         -l <language> 
-            Language of the ASVS controls. 
-            Avaiable options are en, es or zh-cn
-            Default: en
+            The language of the ASVS controls. Avaiable options are en, es or zh-cn. Default is en
         -d <securityrat_docker_db_container>
             The running docker container that contains the SecurityRAT database where it will overwrite the requirements.
             Example: securityrat-mysql
-        -s
-            Categorizes the ASVS requirements following STRIDE threats mapping.
-            More info at: https://github.com/mllamazares/STRIDE-vs-ASVS
         -h
             Prints this message (duh).
     """
@@ -31,19 +28,17 @@ print_help() {
 }
 
 get_latest_release() {
-    curl --silent "https://api.github.com/repos/$1/releases/latest" | grep '"tag_name":' | grep -Po "\d+\.\d+\.\d+"
+    curl --silent "https://api.github.com/repos/$1/releases/latest" | grep '"tag_name":' | grep -Po "[\d\.]+"
 }
 
 lang="en"
 docker_db_container=""
-stride=""
 
 while getopts l:d:sh flag
 do
     case "${flag}" in
         l) lang=${OPTARG};;
         d) docker_db_container=${OPTARG};;
-        s) stride="_stride";;
         h) print_help;;
     esac
 done
@@ -52,24 +47,29 @@ echo "[+] Searching latest ASVS relase..."
 version=$(get_latest_release "OWASP/ASVS")
 main_version=${version::-2}
 
-echo "[i] The lastest ASVS version is ${version}"
+echo "   The lastest ASVS version is ${version}"
 
-asvs_csv="./sql/asvs_${version}_${lang}.csv"
-asvs_sql="./sql/secrat_asvs_${version}_${lang}${stride}.sql"
-secrat_final_sql="./output/secrat_asvs_final_${version}_${lang}${stride}.sql"
+asvs_csv="./csv/asvs_${version}_${lang}.csv"
 asvs_csv_github_url="https://raw.githubusercontent.com/OWASP/ASVS/master/${main_version}/docs_${lang}/OWASP%20Application%20Security%20Verification%20Standard%20${version}-${lang}.csv"
 
 echo "[+] Downloading the ${lang} version of ASVS in CSV format..."
 wget -q ${asvs_csv_github_url} -O ${asvs_csv}
-echo "[i] ${asvs_csv} file downloaded!"
+echo "   ${asvs_csv} file downloaded!"
 
 echo "[+] Creating SQL dump with the required configuration..."
-# Clean double quotes
-sed -i "s/\"\"/'/g" ${asvs_csv}
-awk -f ./scripts/asvs_csv_parser.awk -v stride_version=${stride} ${asvs_csv} > ${asvs_sql}
-cat ./sql/secrat_create.sql ./sql/secrat${stride}_init.sql ${asvs_sql} > ${secrat_final_sql}
 
-echo "[i] ${secrat_final_sql} file generated!"
+asvs_sql="./sql/tmp/secrat_asvs_${version}_${lang}.sql"
+secrat_final_sql="./sql/output/secrat_asvs_final_${version}_${lang}.sql"
+
+# Clean double-double quotes (:
+sed -i "s/\"\"/'/g" ${asvs_csv}
+
+awk -f ./scripts/asvs_csv_parser.awk ${asvs_csv} > ${asvs_sql}
+
+# Merging all SQL files
+cat ./sql/secrat_create.sql ./sql/secrat_init.sql ${asvs_sql} > ${secrat_final_sql}
+
+echo "   ${secrat_final_sql} file generated!"
 
 if [ -n "${docker_db_container}" ]; then
     echo "[+] Loading SQL requirements into SecurityRAT database..."
@@ -77,6 +77,6 @@ if [ -n "${docker_db_container}" ]; then
     docker exec ${docker_db_container} sh -c "./var/dumpRequirements.sh"
 fi
 
-echo "[-] All done! Bye!"
+echo "[+] All done! Bye!"
 
 #EOF
