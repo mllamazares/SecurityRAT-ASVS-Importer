@@ -15,7 +15,7 @@ Script to generate and import ASVS controls to SecurityRAT in the blink of an ey
 [SecurityRAT](https://securityrat.github.io/) (*"Security Requirement Automation Tool"*) is a tool helping you manage security requirements in your agile development projects.
 In a nutshell, you specify the properties of an application (usually, we use the name "artifact") that you’re developing. Based on these properties, the tool gives you a list of security requirements you should fulfill. [^1]
 
-At the time of writing, there are no scripts ~~(that I know)~~ that automates the generation and importation of ASVS security controls into the SecurityRAT tool.
+At the time of writing, there are no scripts ~~(that I know)~~ to automate the generation and importation of ASVS security controls into the SecurityRAT tool.
 
 Importing ASVS controls manually has the following drawdowns:
 1. Time-consuming. 4.0.3 version of ASVS contains nearly 300 security controls and gets updated frequently.
