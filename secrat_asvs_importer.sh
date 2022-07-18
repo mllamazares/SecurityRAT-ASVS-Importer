@@ -1,4 +1,5 @@
 #!/bin/bash
+# Coded with <3 by https://www.linkedin.com/in/mllamazares/
 
 set -e
 
