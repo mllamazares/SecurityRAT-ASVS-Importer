@@ -25,7 +25,7 @@ The SecurityRAT creators also released the [SecurityRAT-Requirements](https://gi
 
 Potential improvements:
 1. The ASVS controls are not updated to the last version.
-2. Just English language available, and the current ASVS version is also available in Spanish and Simplified Chinese ([at least in CSV format](https://github.com/OWASP/ASVS/tree/master/4.0)).
+2. Just English language available, and the current ASVS version is also in Spanish and Simplified Chinese ([at least in CSV format](https://github.com/OWASP/ASVS/tree/master/4.0)).
 3. You need to import them manually to the DB.
 
 ### Features
@@ -45,11 +45,11 @@ cd SecurityRAT-ASVS-Importer
 bash secrat_asvs_importer.sh -h
 ```
 
-### Quick-start guide
+### Quick-start
 
-1. Install SecurityRAT (preferably using [Docker](https://github.com/SecurityRAT/SecurityRAT-dockercompose)):
+1. Get SecurityRAT up and running (preferably using [Docker](https://github.com/SecurityRAT/SecurityRAT-dockercompose)):
     ```bash
-    git https://github.com/SecurityRAT/SecurityRAT-dockercompose.git
+    git clone https://github.com/SecurityRAT/SecurityRAT-dockercompose.git
     cd SecurityRAT-dockercompose
     docker-compose up
     ```
@@ -62,17 +62,17 @@ bash secrat_asvs_importer.sh -h
     ```
     $ bash secrat_asvs_importer.sh -l es -d securityrat-mariadb
     [+] Searching latest ASVS relase...
-    The latest ASVS version is 4.0.3
+        The latest ASVS version is 4.0.3
     [+] Downloading the es version of ASVS in CSV format...
-    ./csv/asvs_4.0.3_es.csv file downloaded!
+        ./csv/asvs_4.0.3_es.csv file downloaded!
     [+] Creating SQL dump with the required configuration...
-    ./sql/output/secrat_asvs_final_4.0.3_es.sql file generated!
+        ./sql/output/secrat_asvs_final_4.0.3_es.sql file generated!
     [+] Loading SQL requirements into SecurityRAT database...
     [+] All done! Bye!
     ``` 
 
 To verify that the requirements are indeed loaded:
-1. Navigate to http://localhost:9002/ and log in with `admin/admin` (yep, you should change this in the future).
+1. Navigate to http://localhost:9002/ and login with `admin/admin` (yep, you should change this in the future).
 2. Click on `Define a new artifact`.
 3. Select the ASVS chapter and level that you need and smash the `Generate` button.
     ![](./img/secrat-asvs-artifact.png)
@@ -105,7 +105,7 @@ $ bash secrat_asvs_importer.sh -h
 ```
 
 ## TODO
-- [ ] Create a better categorization of the requirements. 
+- [ ] Create an enhanced categorization of the requirements. 
     - For sure I will map [STRIDE-vs-ASVS](https://github.com/mllamazares/STRIDE-vs-ASVS), but I'm open to suggestions.
 - [ ] Migrate to Python for better portability and ease of collaboration.
 - [ ] Extend to different security standards like BSI C5.
